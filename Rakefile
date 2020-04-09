@@ -8,7 +8,7 @@ task :default => [:process, :gen, :sync]
 desc 'Process images/videos in tmp/ and move them to img/'
 task :process do
   puts "Copying images from tmp/ to img/"
-  incoming = Dir.new('tmp').reject { |f| f == '..' || f == '.' }
+  incoming = Dir.new('tmp').reject { |f| f[0] == '.' }
   incoming.each do |file|
     finfo = file.split('.')
     finfo[0] = SecureRandom.hex(8)
